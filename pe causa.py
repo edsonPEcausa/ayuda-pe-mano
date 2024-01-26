@@ -11,21 +11,21 @@ class Usuario:
     asignaturas = [ "PROGRAMACION", "BASE DE DATOS", "ANALISIS-PROGRAMACION", "BASE DE DATOS-ANALISIS", "PROGRAMACION-BASE DE DATOS"]
 
 usuarios_registrados = [
-    {"nombre": "JORGE", "apellido": "ALIAGA", "edad": 31, "asignatura": "ANALISIS", "rol": "ESTUDIANTE", "secciones": ["61"]},
-    {"nombre": "RAMIRO", "apellido": "ALVAREZ", "edad": 22, "asignatura": "ANALISIS", "rol": "ESTUDIANTE", "secciones": ["61"]},
-    {"nombre": "JUAN", "apellido": "AYALA", "edad": 28, "asignatura": "ANALISIS", "rol": "ESTUDIANTE", "secciones": ["62"]},
-    {"nombre": "MIGUEL", "apellido": "BRAVO", "edad": 36, "asignatura": "PROGRAMACION", "rol": "ESTUDIANTE", "secciones": ["61"]},
-    {"nombre": "CRISTIAN", "apellido": "BUSTOS", "edad": 34, "asignatura": "PROGRAMACION", "rol": "ESTUDIANTE", "secciones": ["61"]},
-    {"nombre": "EDUARDO", "apellido": "DOMINGUEZ", "edad": 26, "asignatura": "PROGRAMACION", "rol": "ESTUDIANTE", "secciones": ["61"]},
-    {"nombre": "CRISTHIAN", "apellido": "ECHEVERRÍA", "edad": 38, "asignatura": "PROGRAMACION", "rol": "ESTUDIANTE", "secciones": ["61"]},
-    {"nombre": "NICOLAS", "apellido": "ESPINOZA", "edad": 33, "asignatura": "PROGRAMACION", "rol": "ESTUDIANTE", "secciones": ["62"]},
-    {"nombre": "JAVIER", "apellido": "FIGUEROA", "edad": 31, "asignatura": "BASE DE DATOS", "rol": "ESTUDIANTE", "secciones": ["62"]},
-    {"nombre": "FRANKLIN", "apellido": "MARTINEZ", "edad": 20, "asignatura": "BASE DE DATOS", "rol": "ESTUDIANTE", "secciones": ["1"]},
-    {"nombre": "FRANCISCO", "apellido": "MEDINA", "edad": 28, "asignatura": "BASE DE DATOS", "rol": "ESTUDIANTE", "secciones": ["1"]},
-    {"nombre": "OMAR", "apellido": "MENA", "edad": 33, "asignatura": "BASE DE DATOS", "rol": "ESTUDIANTE", "secciones": ["2"]},
-    {"nombre": "SAMUEL", "apellido": "MENDOZA", "edad": 34, "asignatura": "BASE DE DATOS", "rol": "ESTUDIANTE", "secciones": ["2"]},
-  
+    Usuario("JORGE", "ALIAGA", 31, "ANALISIS", "ESTUDIANTE", ["61"]),
+    Usuario("RAMIRO", "ALVAREZ", 22, "ANALISIS", "ESTUDIANTE", ["61"]),
+    Usuario("JUAN", "AYALA", 28, "ANALISIS", "ESTUDIANTE", ["62"]),
+    Usuario("MIGUEL", "BRAVO", 36, "PROGRAMACION", "ESTUDIANTE", ["61"]),
+    Usuario("CRISTIAN", "BUSTOS", 34, "PROGRAMACION", "ESTUDIANTE", ["61"]),
+    Usuario("EDUARDO", "DOMINGUEZ", 26, "PROGRAMACION", "ESTUDIANTE", ["61"]),
+    Usuario("CRISTHIAN", "ECHEVERRÍA", 38, "PROGRAMACION", "ESTUDIANTE", ["61"]),
+    Usuario("NICOLAS", "ESPINOZA", 33, "PROGRAMACION", "ESTUDIANTE", ["62"]),
+    Usuario("JAVIER", "FIGUEROA", 31, "BASE DE DATOS", "ESTUDIANTE", ["62"]),
+    Usuario("FRANKLIN", "MARTINEZ", 20, "BASE DE DATOS", "ESTUDIANTE", ["1"]),
+    Usuario("FRANCISCO", "MEDINA", 28, "BASE DE DATOS", "ESTUDIANTE", ["1"]),
+    Usuario("OMAR", "MENA", 33, "BASE DE DATOS", "ESTUDIANTE", ["2"]),
+    Usuario("SAMUEL", "MENDOZA", 34, "BASE DE DATOS", "ESTUDIANTE", ["2"]),
 ]
+
 profesores_registrados = [
      {"nombre": "PATRICIO", "apellido": "VERGARA", "edad": 33, "asignatura": "ANALISIS - PROGRAMACION", "rol": "PROFESOR", "secciones": ["61", "62"]},
     {"nombre": "DIEGO", "apellido": "YAÑEZ", "edad": 40, "asignatura": "BASE DE DATOS - ANALISIS", "rol": "PROFESOR", "secciones": ["62", "1", "2"]},
@@ -52,22 +52,22 @@ def ingresar_usuario():
     print(f"Usuario {rol} agregado con éxito.")
     
     
-    def mostrar_usuarios():
-        print("\nLista de Usuarios:")
+def mostrar_usuarios():
+    print("\nLista de Usuarios:")
     for usuario in usuarios_registrados:
-        print("\nNombre:", usuario.nombre)
-        print("Apellidos:", usuario.apellidos)
-        print("Edad:", usuario.edad)
-        print("Asignatura:", usuario.asignatura)
-        print("Rol:", usuario.rol)
-        print("Sección:", usuario.seccion)
-        print("\nFin de la lista.")
+           print("\nNombre:", usuario.nombre)
+           print("Apellidos:", usuario.apellidos)
+           print("Edad:", usuario.edad)
+           print("Asignatura:", usuario.asignatura)
+           print("Rol:", usuario.rol)
+           print("Sección:", usuario.seccion)
+           print("\nFin de la lista.")
 
 
 
     for profesor in profesores_registrados:
         if (
-            profesor["nombre"] == profesores_registrados["nombre"]
+            profesor["nombre"] == nombre
             and profesor["apellido"] == apellidos
             and profesor["asignatura"] == asignatura
             and seccion in profesor["secciones"]
@@ -253,16 +253,16 @@ def mostrar_por_docentes():
         print("\nLista de Docentes:")
         for profesor in profesores_registrados:
               profesor.rol == 'PROFESOR'
-        if (
-                profesor.rol == 'PROFESOR'
-                and docente.nombre == profesor.nombre
-                and docente.apellidos == profesor.apellidos
-                and docente.asignatura == profesor.asignatura
-                and docente.seccion in profesor.seccion
-            ):
-                print("\nNombre: ", profesor.nombre, profesor.apellido)
-                print("Asignatura: ", profesor.asignatura)
-                print("Sección: ", profesor.seccion)
+              if (
+                profesor["rol"] == 'PROFESOR'
+                and docente.nombre == profesor["nombre"]
+                and docente.apellidos == profesor["apellidos"]
+                and docente.asignatura == profesor["asignatura"]
+                and docente.seccion in profesor["secciones"]
+               ):
+                print("\nNombre: ", profesor["nombre"], profesor["apellido"])
+                print("Asignatura: ", profesor["asignatura"])
+                print("Sección: ", profesor["seccion"])
         print("\nFin de la lista.")
 
 
@@ -279,7 +279,7 @@ def validar_docente():
             and profesor["nombre"] == nombre
             and profesor["apellido"] == apellidos
             and profesor["asignatura"] == asignatura
-            and seccion in profesor.seccion
+            and seccion in profesor["secciones"]
         ):
             docente_encontrado = profesor
             break
